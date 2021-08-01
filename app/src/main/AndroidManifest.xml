@@ -3,6 +3,7 @@
     package="com.gketdev.gazorpazorp">
 
     <application
+        android:name=".GazorpazorpApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -10,7 +11,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Gazorpazorp">
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.MainActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.splash.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,5 +23,6 @@
             </intent-filter>
         </activity>
     </application>
+    <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>

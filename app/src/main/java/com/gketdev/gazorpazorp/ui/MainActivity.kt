@@ -1,7 +1,8 @@
-package com.gketdev.gazorpazorp
+package com.gketdev.gazorpazorp.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.gketdev.gazorpazorp.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
