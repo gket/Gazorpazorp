@@ -5,6 +5,10 @@
       <map>
         <entry key="..\:/Users/gorke/Desktop/Gazorpazorp/app/src/main/res/layout/activity_main.xml" value="0.2957427536231884" />
         <entry key="..\:/Users/gorke/Desktop/Gazorpazorp/app/src/main/res/layout/activity_splash.xml" value="0.2957427536231884" />
+        <entry key="..\:/Users/gorke/Desktop/Gazorpazorp/app/src/main/res/layout/fragment_character.xml" value="0.2957427536231884" />
+        <entry key="..\:/Users/gorke/Desktop/Gazorpazorp/app/src/main/res/layout/fragment_favorite.xml" value="0.2957427536231884" />
+        <entry key="..\:/Users/gorke/Desktop/Gazorpazorp/app/src/main/res/layout/fragment_place.xml" value="0.2957427536231884" />
+        <entry key="..\:/Users/gorke/Desktop/Gazorpazorp/app/src/main/res/menu/botom_menu.xml" value="0.3546875" />
       </map>
     </option>
   </component>

@@ -19,14 +19,4 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/rickandmorty" />
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
-        android:text="Button"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView"
-        app:layout_constraintEnd_toEndOf="@+id/imageView"
-        app:layout_constraintStart_toStartOf="@+id/imageView" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

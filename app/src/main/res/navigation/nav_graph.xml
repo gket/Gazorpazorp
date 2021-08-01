@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/character">
+
+    <fragment
+        android:id="@+id/character"
+        android:name="com.gketdev.gazorpazorp.ui.characters.CharacterFragment"
+        android:label="@string/text_characters"
+        tools:layout="@layout/fragment_character" />
+
+    <fragment
+        android:id="@+id/places"
+        android:name="com.gketdev.gazorpazorp.ui.places.PlaceFragment"
+        android:label="@string/text_location"
+        tools:layout="@layout/fragment_place" />
+
+    <fragment
+        android:id="@+id/favorites"
+        android:name="com.gketdev.gazorpazorp.ui.favorite.FavoriteFragment"
+        android:label="@string/text_favorite"
+        tools:layout="@layout/fragment_favorite" />
+
+</navigation>
