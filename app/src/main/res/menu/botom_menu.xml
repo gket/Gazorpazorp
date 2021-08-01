@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/character"
+        android:title="@string/text_characters"
+        android:icon="@drawable/ic_person"/>
+    <item
+        android:id="@+id/places"
+        android:title="@string/text_location"
+        android:icon="@drawable/ic_place"/>
+
+    <item
+        android:id="@+id/favorites"
+        android:title="@string/text_favorite"
+        android:icon="@drawable/ic_favorite"/>
+</menu>

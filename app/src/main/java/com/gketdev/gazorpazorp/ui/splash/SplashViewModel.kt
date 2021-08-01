@@ -2,33 +2,27 @@ package com.gketdev.gazorpazorp.ui.splash
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.gketdev.gazorpazorp.network.NetworkState
-import com.gketdev.gazorpazorp.repository.CharacterRepository
+import com.gketdev.gazorpazorp.ui.characters.CharacterViewState
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class SplashViewModel @Inject constructor(private val repository: CharacterRepository) :
-    ViewModel() {
+class SplashViewModel @Inject constructor() : ViewModel() {
 
-    private val _viewState = MutableStateFlow<SplashViewState>(SplashViewState.Loading)
-    val viewState: StateFlow<SplashViewState> = _viewState
+    private val _state = MutableStateFlow<Boolean>(false)
+    val viewState: StateFlow<Boolean> = _state
 
-    fun letsTryServiceCall() {
+    init {
         viewModelScope.launch {
-            repository.getAllCharacters().collect {
-                when (it) {
-                    is NetworkState.Error -> _viewState.value = SplashViewState.Error(it.message)
-                    is NetworkState.Loading -> _viewState.value = SplashViewState.Loading
-                    is NetworkState.Success -> _viewState.value =
-                        SplashViewState.Characters(it.response.results)
-                }
-            }
+            delay(2000)
+            _state.value = true
         }
     }
-
 }
+
