@@ -4,6 +4,7 @@ import android.app.Application
 import androidx.room.Room
 import com.gketdev.gazorpazorp.database.AppTypeConverter
 import com.gketdev.gazorpazorp.database.CharacterDao
+import com.gketdev.gazorpazorp.database.CharacterKeysDao
 import com.gketdev.gazorpazorp.database.RickAndMortyDatabase
 import com.squareup.moshi.Moshi
 import dagger.Module
@@ -24,24 +25,34 @@ object DatabaseModule {
 
     @Provides
     @Singleton
+    fun provideTypeResponseConverter(moshi: Moshi): AppTypeConverter {
+        return AppTypeConverter(moshi)
+    }
+
+    @Provides
+    @Singleton
     fun provideDatabase(
-        application: Application
+        application: Application,
+        appTypeConverter: AppTypeConverter
     ): RickAndMortyDatabase {
         return Room
             .databaseBuilder(application, RickAndMortyDatabase::class.java, "Gazorpazorp.db")
+            .addTypeConverter(appTypeConverter)
             .fallbackToDestructiveMigration()
             .build()
     }
 
     @Provides
     @Singleton
-    fun provideDao(rickAndMortyDatabase: RickAndMortyDatabase): CharacterDao {
+    fun provideCharacterDao(rickAndMortyDatabase: RickAndMortyDatabase): CharacterDao {
         return rickAndMortyDatabase.characterDao()
     }
 
     @Provides
     @Singleton
-    fun provideTypeResponseConverter(moshi: Moshi): AppTypeConverter {
-        return AppTypeConverter(moshi)
+    fun provideCharacterKeysDao(rickAndMortyDatabase: RickAndMortyDatabase): CharacterKeysDao {
+        return rickAndMortyDatabase.characterKeysDao()
     }
+
+
 }

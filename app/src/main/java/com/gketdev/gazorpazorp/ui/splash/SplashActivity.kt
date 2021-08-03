@@ -7,6 +7,8 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.gketdev.gazorpazorp.R
+import com.gketdev.gazorpazorp.base.BaseViewModelActivity
+import com.gketdev.gazorpazorp.databinding.ActivityMainBinding
 import com.gketdev.gazorpazorp.databinding.ActivitySplashBinding
 import com.gketdev.gazorpazorp.ui.MainActivity
 import com.gketdev.gazorpazorp.ui.characters.CharacterViewModel
@@ -15,18 +17,22 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 
 @AndroidEntryPoint
-class SplashActivity : AppCompatActivity() {
+class SplashActivity :
+    BaseViewModelActivity<ActivitySplashBinding, SplashViewModel>() {
 
-    private lateinit var binding: ActivitySplashBinding
+    override val viewModel: SplashViewModel by viewModels()
 
-    private val viewModel: SplashViewModel by viewModels()
+    override fun getViewBinding(): ActivitySplashBinding {
+        return ActivitySplashBinding.inflate(layoutInflater)
+    }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        binding = ActivitySplashBinding.inflate(layoutInflater)
-        val view = binding.root
-        setContentView(view)
+    override fun onInitView() {
+    }
 
+    override fun onInitListener() {}
+
+    override fun onObserveData() {
+        super.onObserveData()
         lifecycleScope.launchWhenCreated {
             viewModel.viewState.collect {
                 if (it) {
@@ -41,4 +47,5 @@ class SplashActivity : AppCompatActivity() {
             }
         }
     }
+
 }
