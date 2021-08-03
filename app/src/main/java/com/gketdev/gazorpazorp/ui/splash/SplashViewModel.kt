@@ -2,6 +2,7 @@ package com.gketdev.gazorpazorp.ui.splash
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.gketdev.gazorpazorp.base.BaseViewModel
 import com.gketdev.gazorpazorp.ui.characters.CharacterViewState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.delay
@@ -13,7 +14,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class SplashViewModel @Inject constructor() : ViewModel() {
+class SplashViewModel @Inject constructor() : BaseViewModel() {
 
     private val _state = MutableStateFlow<Boolean>(false)
     val viewState: StateFlow<Boolean> = _state

@@ -1,7 +1,11 @@
 package com.gketdev.gazorpazorp.ui.characters
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import androidx.paging.PagingData
+import com.gketdev.gazorpazorp.base.BaseViewModel
+import com.gketdev.gazorpazorp.data.Character
 import com.gketdev.gazorpazorp.network.NetworkState
 import com.gketdev.gazorpazorp.repository.CharacterRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -13,20 +17,20 @@ import javax.inject.Inject
 
 @HiltViewModel
 class CharacterViewModel @Inject constructor(private val repository: CharacterRepository) :
-    ViewModel() {
+    BaseViewModel() {
 
-    private val _viewState = MutableStateFlow<CharacterViewState>(CharacterViewState.Loading)
-    val viewState: StateFlow<CharacterViewState> = _viewState
+    private val _viewState = MutableStateFlow<PagingData<Character>>(PagingData.empty())
+    val viewState: StateFlow<PagingData<Character>> = _viewState
 
-    fun letsTryServiceCall() {
+    init {
+        getAllCharacters()
+    }
+
+    fun getAllCharacters() {
         viewModelScope.launch {
-            repository.getAllCharacters().collect {
-                when (it) {
-                    is NetworkState.Error -> _viewState.value = CharacterViewState.Error(it.message)
-                    is NetworkState.Loading -> _viewState.value = CharacterViewState.Loading
-                    is NetworkState.Success -> _viewState.value =
-                        CharacterViewState.Characters(it.response.results)
-                }
+            repository.getCharacters("").collect {
+                Log.d("GETCHARACTERS:::", "I collected")
+                _viewState.value = it
             }
         }
     }
