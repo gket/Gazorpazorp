@@ -6,6 +6,8 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.gketdev.gazorpazorp.data.Character
+import com.gketdev.gazorpazorp.data.CharacterKeys
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface CharacterDao {
@@ -21,4 +23,7 @@ interface CharacterDao {
 
     @Query("DELETE FROM character")
     suspend fun clearCharacters()
+
+    @Query("SELECT * FROM character WHERE characterId = :characterId")
+    fun getCharacterById(characterId: Int): Flow<Character?>
 }

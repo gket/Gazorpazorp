@@ -9,7 +9,13 @@
         android:id="@+id/character"
         android:name="com.gketdev.gazorpazorp.ui.characters.CharacterFragment"
         android:label="@string/text_characters"
-        tools:layout="@layout/fragment_character" />
+        tools:layout="@layout/fragment_character">
+
+        <action
+            android:id="@+id/action_characterDetailFragment_to_character"
+            app:destination="@id/characterDetailFragment" />
+
+    </fragment>
 
     <fragment
         android:id="@+id/places"
@@ -22,5 +28,21 @@
         android:name="com.gketdev.gazorpazorp.ui.favorite.FavoriteFragment"
         android:label="@string/text_favorite"
         tools:layout="@layout/fragment_favorite" />
+
+    <fragment
+        android:id="@+id/characterDetailFragment"
+        android:name="com.gketdev.gazorpazorp.ui.characterdetail.CharacterDetailFragment"
+        android:label="PhotoDetailFragment">
+        <action
+            android:id="@+id/action_characterDetailFragment_to_character"
+            app:destination="@id/character"
+            app:popUpTo="@id/characterDetailFragment"
+            app:popUpToInclusive="true" />
+        <argument
+            android:name="id"
+            app:argType="integer"
+            app:nullable="false" />
+    </fragment>
+
 
 </navigation>

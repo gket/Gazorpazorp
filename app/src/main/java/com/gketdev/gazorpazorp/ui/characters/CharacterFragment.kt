@@ -4,9 +4,11 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import com.gketdev.gazorpazorp.adapter.CharacterPagingAdapter
 import com.gketdev.gazorpazorp.base.BaseViewModelFragment
 import com.gketdev.gazorpazorp.databinding.FragmentCharacterBinding
+import com.gketdev.gazorpazorp.ui.characterdetail.CharacterDetailFragmentDirections
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 
@@ -35,6 +37,12 @@ class CharacterFragment : BaseViewModelFragment<FragmentCharacterBinding, Charac
             viewModel.viewState.collect {
                 characterAdapter?.submitData(lifecycle, it)
             }
+        }
+        characterAdapter?.onImageClicked = {
+            val action = CharacterFragmentDirections.actionCharacterDetailFragmentToCharacter(
+                it.characterId
+            )
+            findNavController().navigate(action)
         }
     }
 

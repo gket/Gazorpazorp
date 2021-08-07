@@ -37,6 +37,7 @@ class SplashActivity :
             viewModel.viewState.collect {
                 if (it) {
                     startActivity(Intent(this@SplashActivity, MainActivity::class.java))
+                    finish()
                 } else {
                     Toast.makeText(
                         this@SplashActivity,
