@@ -2,6 +2,7 @@ package com.gketdev.gazorpazorp.di
 
 import com.gketdev.gazorpazorp.api.RickAndMortyApiService
 import com.gketdev.gazorpazorp.database.RickAndMortyDatabase
+import com.gketdev.gazorpazorp.repository.CharacterDetailRepository
 import com.gketdev.gazorpazorp.repository.CharacterRepository
 import dagger.Module
 import dagger.Provides
@@ -12,7 +13,18 @@ import dagger.hilt.components.SingletonComponent
 @InstallIn(SingletonComponent::class)
 object RepositoryModule {
     @Provides
-    fun provideCharacterRepository(apiService: RickAndMortyApiService, database : RickAndMortyDatabase): CharacterRepository {
+    fun provideCharacterRepository(
+        apiService: RickAndMortyApiService,
+        database: RickAndMortyDatabase
+    ): CharacterRepository {
         return CharacterRepository(apiService, database)
+    }
+
+    @Provides
+    fun provideCharacterDetailRepository(
+        apiService: RickAndMortyApiService,
+        database: RickAndMortyDatabase
+    ): CharacterDetailRepository {
+        return CharacterDetailRepository(apiService, database)
     }
 }

@@ -9,6 +9,7 @@ import com.gketdev.gazorpazorp.database.CharacterDao
 import com.gketdev.gazorpazorp.database.RickAndMortyDatabase
 import com.gketdev.gazorpazorp.network.NetworkState
 import com.gketdev.gazorpazorp.source.GazorpazorpPagingSource
+import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
@@ -32,7 +33,7 @@ class CharacterRepository(
                 database
             ),
             pagingSourceFactory = pagingSourceFactory
-        ).flow
+        ).flow.cachedIn(GlobalScope)
     }
 
     companion object {
