@@ -14,6 +14,8 @@ This project includes :
 
 -Room
 
+-Paging3
+
 -ViewBinding
 
 -Moshi
