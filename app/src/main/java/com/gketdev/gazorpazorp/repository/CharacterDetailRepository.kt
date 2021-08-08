@@ -3,7 +3,7 @@ package com.gketdev.gazorpazorp.repository
 import com.gketdev.gazorpazorp.api.RickAndMortyApiService
 import com.gketdev.gazorpazorp.data.Character
 import com.gketdev.gazorpazorp.database.RickAndMortyDatabase
-import com.gketdev.gazorpazorp.network.NetworkState
+import com.gketdev.gazorpazorp.network.DataState
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.flow
@@ -13,12 +13,12 @@ class CharacterDetailRepository(
     private val database: RickAndMortyDatabase
 ) : BaseRepository() {
 
-    fun getSingleCharWithId(id: Int): Flow<NetworkState<Character>> = flow {
+    fun getSingleCharWithId(id: Int): Flow<DataState<Character>> = flow {
         database.characterDao().getCharacterById(id).collect {
             if (it != null) {
-                emit(NetworkState.Success(it))
+                emit(DataState.Success(it))
             } else {
-                emit(apiCallResponse { apiService.getSingleCharacter(id) })
+                emit(DataState.Error(null, 0, "Database error"))
             }
         }
     }
