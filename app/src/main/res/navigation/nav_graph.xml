@@ -18,12 +18,6 @@
     </fragment>
 
     <fragment
-        android:id="@+id/places"
-        android:name="com.gketdev.gazorpazorp.ui.places.PlaceFragment"
-        android:label="@string/text_location"
-        tools:layout="@layout/fragment_place" />
-
-    <fragment
         android:id="@+id/favorites"
         android:name="com.gketdev.gazorpazorp.ui.favorite.FavoriteFragment"
         android:label="@string/text_favorite"

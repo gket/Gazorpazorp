@@ -1,12 +1,10 @@
 package com.gketdev.gazorpazorp.ui.characters
 
 import android.util.Log
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import com.gketdev.gazorpazorp.base.BaseViewModel
 import com.gketdev.gazorpazorp.data.Character
-import com.gketdev.gazorpazorp.network.NetworkState
 import com.gketdev.gazorpazorp.repository.CharacterRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
